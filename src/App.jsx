@@ -1,29 +1,13 @@
-import React, { useEffect } from 'react';
+import { useQuery } from 'react-query';
 
-const App = () => {
-  useEffect(() => {
-    const pingGitHub = async () => {
-      try {
-        const response = await fetch('https://api.github.com');
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error('Error pinging GitHub:', error);
-      }
-    };
+function fetchGitHubData() {
+  return fetch('https://api.github.com/some-endpoint').then(res => res.json());
+}
 
-    pingGitHub();
-    
-    const intervalId = setInterval(pingGitHub, 5000); // ping every 5 seconds
+function GitHubComponent() {
+  const { data, refetch } = useQuery('githubData', fetchGitHubData, {
+    refetchInterval: 60000, // Refetch every 60 seconds
+  });
 
-    return () => clearInterval(intervalId); // cleanup on unmount
-  }, []);
-
-  return (
-    <div>
-      Check the console for GitHub response.
-    </div>
-  );
-};
-
-export default App;
+  return <div>{data ? data.someField : 'Loading...'}</div>;
+}
