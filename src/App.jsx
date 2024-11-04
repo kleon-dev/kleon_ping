@@ -1,4 +1,5 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
+
 
 function fetchGitHubData() {
   return fetch('https://vivid-talented-preface.glitch.me/wake-server').then(res => res.json());
