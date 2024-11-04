@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 
-
 function fetchGitHubData() {
   return fetch('https://vivid-talented-preface.glitch.me/wake-server').then(res => res.json());
 }
@@ -12,3 +11,5 @@ function GitHubComponent() {
 
   return <div>{data ? data.someField : 'Loading...'}</div>;
 }
+
+export default GitHubComponent;
