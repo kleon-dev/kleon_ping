@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
 function fetchGitHubData() {
-  return fetch('https://api.github.com/some-endpoint').then(res => res.json());
+  return fetch('https://vivid-talented-preface.glitch.me/wake-server').then(res => res.json());
 }
 
 function GitHubComponent() {
